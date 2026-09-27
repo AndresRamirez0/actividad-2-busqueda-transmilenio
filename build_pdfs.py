@@ -13,7 +13,7 @@ ROOT = Path(__file__).parent
 REPORT = ROOT / "docs" / "Informe_Pruebas_Actividad_2.pdf"
 DELIVERY = ROOT / "entrega" / "Entrega_Actividad_2.pdf"
 REPO = "https://github.com/AndresRamirez0/actividad-2-busqueda-transmilenio"
-VIDEO = "ENLACE PENDIENTE DESPUES DE GRABAR EL VIDEO"
+VIDEO = "https://www.youtube.com/watch?v=um-h3PmFX1A"
 
 regular = Path(r"C:\Windows\Fonts\aptos.ttf")
 bold = Path(r"C:\Windows\Fonts\aptos-bold.ttf")
@@ -122,8 +122,9 @@ delivery = cover("Documento de entrega")
 delivery += [p("Descripción", "H1x"), p("Sistema académico desarrollado en Python que combina una base de conocimiento, cinco reglas lógicas, el algoritmo A* y pruebas comparativas con Dijkstra para recomendar rutas en una red simplificada de TransMilenio."),
     p("Código fuente e instrucciones", "H1x"), p(f'<link href="{REPO}">{REPO}</link>', "Linkx"),
     p("Informe de pruebas", "H1x"), p(f'<link href="{REPO}/blob/main/docs/Informe_Pruebas_Actividad_2.pdf">{REPO}/blob/main/docs/Informe_Pruebas_Actividad_2.pdf</link>', "Linkx"),
-    p("Video explicativo", "H1x"), p(VIDEO, "Linkx"),
-    p("Observación", "H1x"), p("Entrega individual. El repositorio es público para permitir la revisión. La invitación formal como colaboradora se enviará cuando se disponga del usuario o correo de GitHub de la docente. Antes de entregar, se debe reemplazar el texto pendiente por el enlace público o no listado del video."),
+    p("Video explicativo", "H1x"),
+    p(f'<link href="{VIDEO}">{VIDEO}</link>', "Linkx"),
+    p("Observación", "H1x"), p("Entrega individual. El repositorio es público para permitir la revisión. La invitación formal como colaboradora se enviará cuando se disponga del usuario o correo de GitHub de la docente."),
     p("Fecha límite", "H1x"), p("27 de septiembre de 2026, antes de las 23:59 (hora de Bogotá).")]
 document(DELIVERY, "Entrega - Actividad 2").build(delivery)
 print(REPORT)
