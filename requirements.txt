@@ -1,0 +1,4 @@
+# El programa y las pruebas usan exclusivamente la biblioteca estandar de Python.
+# reportlab solo se requiere para regenerar los documentos PDF.
+reportlab>=4.0
+
