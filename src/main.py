@@ -4,6 +4,22 @@ from src.base_conocimiento import ESTACIONES
 from src.busqueda import buscar_a_estrella
 
 
+def resolver_estacion(valor):
+    """Convierte un numero o un nombre escrito por el usuario en una estacion."""
+    entrada = valor.strip()
+    nombres = list(ESTACIONES)
+    if entrada.isdigit():
+        indice = int(entrada) - 1
+        if 0 <= indice < len(nombres):
+            return nombres[indice]
+        raise ValueError(f"El numero debe estar entre 1 y {len(nombres)}.")
+
+    coincidencias = {nombre.casefold(): nombre for nombre in nombres}
+    if entrada.casefold() in coincidencias:
+        return coincidencias[entrada.casefold()]
+    raise ValueError(f"La estacion '{entrada}' no existe.")
+
+
 def mostrar_estaciones():
     print("\nEstaciones disponibles:")
     for numero, nombre in enumerate(ESTACIONES, 1):
@@ -12,9 +28,9 @@ def mostrar_estaciones():
 
 def ejecutar_consulta(cerradas):
     mostrar_estaciones()
-    origen = input("\nEstacion de origen: ").strip()
-    destino = input("Estacion de destino: ").strip()
     try:
+        origen = resolver_estacion(input("\nNumero o nombre de la estacion de origen: "))
+        destino = resolver_estacion(input("Numero o nombre de la estacion de destino: "))
         resultado = buscar_a_estrella(origen, destino, cerradas)
     except ValueError as error:
         print(f"\nError: {error}")
@@ -31,10 +47,14 @@ def ejecutar_consulta(cerradas):
 
 def cerrar_estacion(cerradas):
     mostrar_estaciones()
-    nombre = input("\nEstacion que desea cerrar o reabrir: ").strip()
-    if nombre not in ESTACIONES:
-        print("La estacion indicada no existe.")
-    elif nombre in cerradas:
+    try:
+        nombre = resolver_estacion(
+            input("\nNumero o nombre de la estacion que desea cerrar o reabrir: ")
+        )
+    except ValueError as error:
+        print(f"Error: {error}")
+        return
+    if nombre in cerradas:
         cerradas.remove(nombre)
         print(f"{nombre} fue reabierta.")
     else:

@@ -21,6 +21,9 @@ python -m src.main
 python -m unittest discover -s tests -v
 ```
 
+Las estaciones pueden seleccionarse por el número mostrado en pantalla o por su
+nombre. Los nombres no distinguen entre mayúsculas y minúsculas.
+
 ## Estructura
 
 ```text

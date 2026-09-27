@@ -2,6 +2,7 @@ import math
 import unittest
 
 from src.busqueda import buscar_a_estrella, buscar_dijkstra
+from src.main import resolver_estacion
 from src.reglas import es_transbordo, ruta_valida
 
 
@@ -38,6 +39,18 @@ class PruebasSistemaRutas(unittest.TestCase):
     def test_regla_transbordo(self):
         self.assertTrue(es_transbordo("Calle 26"))
         self.assertFalse(es_transbordo("Marly"))
+
+    def test_seleccion_por_numero(self):
+        self.assertEqual(resolver_estacion("1"), "Portal Norte")
+        self.assertEqual(resolver_estacion("25"), "Portal El Dorado")
+
+    def test_seleccion_por_nombre_ignora_mayusculas(self):
+        self.assertEqual(resolver_estacion("portal norte"), "Portal Norte")
+        self.assertEqual(resolver_estacion("PORTAL EL DORADO"), "Portal El Dorado")
+
+    def test_numero_fuera_de_rango(self):
+        with self.assertRaisesRegex(ValueError, "entre 1 y 25"):
+            resolver_estacion("26")
 
 
 if __name__ == "__main__":
