@@ -1,0 +1,8 @@
+CASO 1 - Ruta directa: Portal Norte a Calle 100; costo esperado 22 minutos.
+CASO 2 - Ruta extensa: Portal Norte a Portal El Dorado; A* y Dijkstra coinciden.
+CASO 3 - Cierre con alternativa: Calle 76 cerrada; se usa Heroes-Calle 72.
+CASO 4 - Cierre sin alternativa: Calle 26 cerrada; no existe ruta al Portal El Dorado.
+CASO 5 - Origen inexistente: el sistema muestra un mensaje comprensible.
+CASO 6 - Origen igual al destino: la consulta es rechazada.
+CASO 7 - Transbordo: Calle 26 cumple la regla y Marly no.
+
